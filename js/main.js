@@ -2,9 +2,9 @@
 //Json stringify, localStorage, Json parse
 // array chứa object sinh viên
 var dssv = [];
-//  muốn lấy dữ liệu JSON khi nó load trang
-var jsonData = localStorage.getItem("DSSV");
 
+//  LẤY RA dữ liệu từ localStorage khi nó load trang
+var jsonData = localStorage.getItem("DSSV");
 if (jsonData != null){
     var list = JSON.parse(jsonData);
     dssv = list.map(function(item){
@@ -14,6 +14,7 @@ if (jsonData != null){
     // map js 
 }
 
+// LƯU dữ liệu vào localStorage
 function themSV(){
     // lấy thông tin
     var sv = layThongTinTuForm();

@@ -1,5 +1,6 @@
 // DEFINITION JS
-function renderDSSV (dssv){
+// rendering EACH student
+function renderDSSV (dssv){ 
     var contentHTML = "";
     for (var i=0; i<dssv.length; i++){
         var data = dssv[i];
@@ -20,22 +21,17 @@ function renderDSSV (dssv){
 // why ${data.ma} should be surrounded by a pair of single quotes
 
 function timViTri (id, dssv){
-    for (var i=0; i< dssv.length; i++){
-        if (dssv[i].ma == id){
-            return i;
-        }
-    }
-}
+    // for (var i=0; i< dssv.length; i++){
+    //     if (dssv[i].ma == id){
+    //         return i;
+    //     }
+    // } cách này hơi dài, dùng findIndex nhanh hơn (tên gọi chung là callback)
+    var viTri = dssv.findIndex(function(sv){
+        return dssv.ma == id;
+    })
+    return viTri;
 
-function showThongTinLenForm (sv){
-    document.getElementById("txtMaSV").value = sv.ma;
-    document.getElementById("txtTenSV").value = sv.ten;
-    document.getElementById("txtEmail").value = sv.email;
-    document.getElementById("txtPass").value = sv.matKhau;
-    document.getElementById("txtDiemToan").value = sv.toan;
-    document.getElementById("txtDiemLy").value = sv.ly;
-    document.getElementById("txtDiemHoa").value = sv.hoa;
-} 
+}
 
 function layThongTinTuForm(){
     // lấy thông tin
@@ -49,5 +45,17 @@ function layThongTinTuForm(){
     var sv = new SinhVien (_ma, _ten, _email, _matKhau, _toan, _ly, _hoa);
     return sv;
 }
+
+function showThongTinLenForm (sv){
+    document.getElementById("txtMaSV").value = sv.ma;
+    document.getElementById("txtTenSV").value = sv.ten;
+    document.getElementById("txtEmail").value = sv.email;
+    document.getElementById("txtPass").value = sv.matKhau;
+    document.getElementById("txtDiemToan").value = sv.toan;
+    document.getElementById("txtDiemLy").value = sv.ly;
+    document.getElementById("txtDiemHoa").value = sv.hoa;
+} 
+
+
 
 
