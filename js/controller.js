@@ -1,3 +1,4 @@
+// DEFINITION JS
 function renderDSSV (dssv){
     var contentHTML = "";
     for (var i=0; i<dssv.length; i++){
@@ -8,7 +9,7 @@ function renderDSSV (dssv){
                             <td>${data.email}</td>
                             <td>${data.tinhDTB()}</td>
                             <td>
-                                <button class="btn btn-warning">Sửa</button>
+                                <button onclick="suaSV('${data.ma}')" class="btn btn-warning">Sửa</button>
                                 <button onclick="xoaSV('${data.ma}')" class="btn btn-danger">Xóa</button>
                             </td>
                         </tr>`;
@@ -26,7 +27,27 @@ function timViTri (id, dssv){
     }
 }
 
-// 
+function showThongTinLenForm (sv){
+    document.getElementById("txtMaSV").value = sv.ma;
+    document.getElementById("txtTenSV").value = sv.ten;
+    document.getElementById("txtEmail").value = sv.email;
+    document.getElementById("txtPass").value = sv.matKhau;
+    document.getElementById("txtDiemToan").value = sv.toan;
+    document.getElementById("txtDiemLy").value = sv.ly;
+    document.getElementById("txtDiemHoa").value = sv.hoa;
+} 
 
+function layThongTinTuForm(){
+    // lấy thông tin
+    var _ma = document.getElementById("txtMaSV").value;
+    var _ten = document.getElementById("txtTenSV").value;
+    var _email = document.getElementById("txtEmail").value;
+    var _matKhau = document.getElementById("txtPass").value;
+    var _toan = document.getElementById("txtDiemToan").value*1;
+    var _ly = document.getElementById("txtDiemLy").value*1;
+    var _hoa = document.getElementById("txtDiemHoa").value*1;
+    var sv = new SinhVien (_ma, _ten, _email, _matKhau, _toan, _ly, _hoa);
+    return sv;
+}
 
 

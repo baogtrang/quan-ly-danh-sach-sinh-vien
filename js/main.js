@@ -1,3 +1,4 @@
+// USAGE JS
 //Json stringify, localStorage, Json parse
 // array chứa object sinh viên
 var dssv = [];
@@ -15,24 +16,7 @@ if (jsonData != null){
 
 function themSV(){
     // lấy thông tin
-    var _ma = document.getElementById("txtMaSV").value;
-    var _ten = document.getElementById("txtTenSV").value;
-    var _email = document.getElementById("txtEmail").value;
-    var _matKhau = document.getElementById("txtPass").value;
-    var _toan = document.getElementById("txtDiemToan").value*1;
-    var _ly = document.getElementById("txtDiemLy").value*1;
-    var _hoa = document.getElementById("txtDiemHoa").value*1;
-
-    // var sv = {
-    //     ma: _ma,
-    //     ten:_ten,
-    //     email :_email,
-    //     matkhau :_matKhau,
-    //     toan :_toan,
-    //     ly :_ly,
-    //     hoa :_hoa,
-    // }
-    var sv = new SinhVien (_ma, _ten, _email, _matKhau, _toan, _ly, _hoa);
+    var sv = layThongTinTuForm();
     dssv.push(sv);
     
     // lưu dữ liệu vào localStorage
@@ -53,4 +37,19 @@ function xoaSV(id){
     renderDSSV(dssv);
 }
 
+function suaSV (id){
+    var index = timViTri(id, dssv);
+    var sv = dssv[index];
+    showThongTinLenForm(sv);
+    document.getElementById("txtMaSV").disabled = true;
+}
+
+function capNhatSV(){
+    // WON'T allow users to change ID
+    var sv = layThongTinTuForm();
+    var index = timViTri(sv.ma, dssv);
+    // update the sv object in the dssv array
+    dssv[index] = sv;
+    renderDSSV(dssv);
+}
 

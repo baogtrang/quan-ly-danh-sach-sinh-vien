@@ -1,4 +1,4 @@
-// OBJECT CLASS DEFINITIONS
+// OBJECT CLASS JS
 function SinhVien (_ma, _ten, _email, _matKhau, _toan, _ly, _hoa){
     this.ma= _ma;
     this.ten=_ten;
