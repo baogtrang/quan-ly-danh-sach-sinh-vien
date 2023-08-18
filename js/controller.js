@@ -1,4 +1,4 @@
-// DEFINITION JS
+// CRUD JS (for logic)
 // rendering EACH student
 function renderDSSV (dssv){ 
     var contentHTML = "";

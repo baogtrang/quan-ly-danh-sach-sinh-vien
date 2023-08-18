@@ -18,6 +18,25 @@ if (jsonData != null){
 function themSV(){
     // lấy thông tin
     var sv = layThongTinTuForm();
+
+    // trước khi push object sv vào array dssv
+
+    // start VALIDATE
+    // tên 
+    /** 
+     * &&, $, true (1), false (0)
+     * dùng &&, 1 function returns false, the other functions won't run
+     * dùng &, all functions will run whatsoever, though the result won't change
+     * 
+     * */ 
+    var isValid = kiemTraRong("spanTenSV", sv.ten) & 
+    kiemTraDoDai(2, 30, "spanTenSV", sv.ten) &
+    kiemTraDoDai(2, 30, "spanMatKhau", sv.matKhau) &
+    kiemTraEmail("spanEmailSV",sv.email);
+    if (!isValid) return;
+    // nếu điều kiện không thỏa mãn thì ngưng tại đây
+    // end VALIDATE
+
     dssv.push(sv);
     
     // lưu dữ liệu vào localStorage
